@@ -6,6 +6,10 @@ var organizations = [
     new Organization({id: 2, name: 'Myrhaugen', city: 'Oslo', country: 'Norway'})
 ];
 
+function generateNextId() {
+    return _.max(organizations, function(org) { return org.id; }).id + 1;
+}
+
 module.exports = {
     get: function(id) {
         id = parseInt(id);
@@ -18,7 +22,15 @@ module.exports = {
         return organizations;
     },
     create: function(organization) {
+        if (!organization.isValid()) {
+            return false;
+        }
 
+        organization.id = generateNextId();
+
+        organizations.push(organization)
+
+        return organization.id;
     },
     update: function(organization) {
 

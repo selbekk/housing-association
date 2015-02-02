@@ -3,4 +3,8 @@ module.exports = function(opts) {
     this.name = opts.name;
     this.city = opts.city;
     this.country = opts.country;
+
+    this.isValid = function() {
+        return this.name && this.city && this.country;
+    }
 }
