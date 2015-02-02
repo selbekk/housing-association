@@ -18,7 +18,10 @@ Just for the sake of being hipster, we'll use **io.js** today.
     npm install
 
 ### Step 2: run the backend
+
 There isn't a frontend build quite yet, so let's just get everything up and
 running:
 
     iojs app.js
+
+And that's it - you should be up and running!
