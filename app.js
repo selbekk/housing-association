@@ -1,13 +1,12 @@
 var express = require('express');
 var app = express();
 
-var apiRouter = require('./api/router.js');
+var organizationsRouter = require('./organizations/organization-router');
 
 // Serve static files from the public directory
-app.use(express.static('public'))
+app.use(express.static('public'));
 
-// Serve API resources
-app.use('/api', apiRouter),
+app.use('/organizations', organizationsRouter);
 
 // Start server
 app.listen(3000, function() {
