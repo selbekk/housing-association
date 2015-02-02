@@ -2,7 +2,7 @@
   "name": "housing-association",
   "version": "1.0.0",
   "description": "An application for handling housing association communications",
-  "main": "index.js",
+  "main": "app/index.js",
   "scripts": {},
   "author": "Kristofer Selbekk",
   "license": "ISC",
