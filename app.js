@@ -2,7 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var fs = require('fs');
 
-var settings = require('./util/settings');
+var settings = require('./config/settings');
 var organizationsRouter = require('./organizations/organization-router');
 
 // Set up express
