@@ -34,8 +34,24 @@ router.route('/:id')
 
         return res.json(organization);
     })
-    .delete(function(req, res) {
+    .put(urlencodedParser, function(req, res) {
+        var organization = new Organization(req.body);
+        if(!organization || !organization.id !== undefined) {
+            organization.id = req.params.id;
+        }
 
+        if (service.update(organization)) {
+            return res.sendStatus(200);
+        }
+        return res.sendStatus(400); // TODO: Improve response
+    })
+    .delete(function(req, res) {
+        var deleted = service.delete(req.params.id);
+
+        if(deleted) {
+            return res.json(deleted);
+        }
+        return res.sendStatus(404); // TODO: Improve response
     });
 
 module.exports = router;

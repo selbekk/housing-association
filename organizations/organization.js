@@ -7,4 +7,8 @@ module.exports = function(opts) {
     this.isValid = function() {
         return this.name && this.city && this.country;
     }
+
+    this.getId = function() {
+        return parseInt(this.id);
+    }
 }
