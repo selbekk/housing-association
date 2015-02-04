@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 var User = require('./user');
 
 var userStore = [
@@ -13,16 +15,14 @@ function getByUsername(username) {
 }
 
 
-module.exports = function() {
-    this.getAll = function() {
+module.exports = {
+    getAll: function() {
         return userStore;
-    }
-
-    this.get = function(username) {
+    },
+    get: function(username) {
         return getByUsername(username);
-    }
-
-    this.create = function(user) {
+    },
+    create: function(user) {
         if (!user || !user.isValid()) {
             return false;
         }
@@ -33,9 +33,8 @@ module.exports = function() {
 
         userStore.push(username);
         return user;
-    }
-
-    this.update = function(user) {
+    },
+    update: function(user) {
         if(!user || !user.isValid()) {
             return false;
         }
@@ -51,9 +50,8 @@ module.exports = function() {
             }
         }
         return false;
-    }
-
-    this.delete = function(username) {
+    },
+    delete: function(username) {
         var userToDelete = getByUsername(username);
 
         if (!userToDelete) {
@@ -68,5 +66,5 @@ module.exports = function() {
         }
 
         return false;
-    };
+    }
 };
