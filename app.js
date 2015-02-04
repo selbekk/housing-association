@@ -1,6 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var fs = require('fs');
+var bodyParser = require('body-parser');
 
 var settings = require('./config/settings');
 var organizationsRouter = require('./organizations/organization-router');
@@ -19,6 +20,9 @@ app.use(morgan(settings.logLevel, { stream: accessLogStream }));
 if(settings.env === 'dev') {
     app.use(morgan(settings.logLevel));
 }
+
+// Parse request bodies
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Set up routes
 app.use('/organizations', organizationsRouter);

@@ -1,18 +1,15 @@
 var express = require('express');
-var bodyParser = require('body-parser');
-
 var service = require('./organization-service');
 var Organization = require('./organization');
 
 var router = express.Router();
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 router.route('/')
     .get(function(req, res) {
         var organizations = service.getAll();
         return res.json(organizations);
     })
-    .post(urlencodedParser, function(req, res) {
+    .post(function(req, res) {
         var organization = new Organization(req.body);
 
         var id = service.create(organization);
@@ -34,7 +31,7 @@ router.route('/:id')
 
         return res.json(organization);
     })
-    .put(urlencodedParser, function(req, res) {
+    .put(function(req, res) {
         var organization = new Organization(req.body);
         if(!organization || !organization.id !== undefined) {
             organization.id = req.params.id;
