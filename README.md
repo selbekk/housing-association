@@ -25,3 +25,13 @@ running:
     iojs app.js
 
 And that's it - you should be up and running!
+
+## Settings
+The settings can be found in config/settings.js. Each and every one of them can be
+overridden over the command line.
+
+An example:
+
+    iojs app.js --env=production
+
+will disable access logging to stdout.
