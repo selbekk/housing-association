@@ -31,7 +31,7 @@ module.exports = {
             return false;
         }
 
-        userStore.push(username);
+        userStore.push(user);
         return user;
     },
     update: function(user) {
@@ -60,7 +60,7 @@ module.exports = {
 
         for (var i = 0; i < userStore.length; i++) {
             if (userStore[i].username === username) {
-                delete userStore[i];
+                userStore.splice(i, 1);
                 return userToDelete;
             }
         }

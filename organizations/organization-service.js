@@ -63,7 +63,7 @@ module.exports = {
 
         for (var i = 0; i < organizations.length; i++) {
             if (organizations[i] === orgToDelete) {
-                delete organizations[i];
+                organizations.splice(i, 1);
                 return orgToDelete;
             }
         }
