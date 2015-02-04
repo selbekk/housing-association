@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 
 var settings = require('./config/settings');
 var organizationsRouter = require('./organizations/organization-router');
+var userRouter = require('./users/user-router');
 
 // Set up express
 var app = express();
@@ -26,6 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Set up routes
 app.use('/organizations', organizationsRouter);
+app.use('/users', userRouter);
 
 // Start server
 app.listen(3000, function() {
