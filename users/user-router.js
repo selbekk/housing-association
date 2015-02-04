@@ -9,7 +9,7 @@ router.route('/')
     .get(function(req, res) {
         return res.json(service.getAll());
     })
-    post(function(req, res) {
+    .post(function(req, res) {
         var user = new User(req.body);
 
         var id = service.create(user);
