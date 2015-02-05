@@ -1,70 +1,30 @@
 var _ = require('lodash');
 
 var User = require('./user');
-
-var userStore = [
-    new User({ username: 'admin', email: 'admin@mailinator.com', phone: '92673134' }),
-    new User({ username: 'selbekk', email: 'selbekk@mailinator.com', phone: '99009900' }),
-    new User({ username: 'test', email: 'test@mailinator.com', phone: '91929394' }),
-];
-
-function getByUsername(username) {
-    return _.find(userStore, function(user) {
-        return user.username === username;
-    });
-}
-
+var repo = require('./user-repository');
 
 module.exports = {
-    getAll: function() {
-        return userStore;
+    getAll: function(callback) {
+        return repo.get(callback);
     },
-    get: function(username) {
-        return getByUsername(username);
+    get: function(username, callback) {
+        return repo.get(username, callback);
     },
-    create: function(user) {
+    create: function(user, callback) {
         if (!user || !user.isValid()) {
             return false;
         }
 
-        if (getByUsername(user.username)) {
-            return false;
-        }
-
-        userStore.push(user);
-        return user;
+        repo.insert(user, callback)
     },
-    update: function(user) {
+    update: function(user, callback) {
         if(!user || !user.isValid()) {
             return false;
         }
 
-        if (!getByUsername(user.username)) {
-            return false;
-        }
-
-        for (var i = 0; i < userStore.length; i++) {
-            if (userStore[i].username === username) {
-                userStore[i] = user;
-                return user;
-            }
-        }
-        return false;
+        repo.update(user, callback);
     },
-    delete: function(username) {
-        var userToDelete = getByUsername(username);
-
-        if (!userToDelete) {
-            return false;
-        }
-
-        for (var i = 0; i < userStore.length; i++) {
-            if (userStore[i].username === username) {
-                userStore.splice(i, 1);
-                return userToDelete;
-            }
-        }
-
-        return false;
+    delete: function(username, callback) {
+        repo.delete(username, callback);
     }
 };
