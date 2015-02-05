@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var config = require('./../config/settings');
 
-this.db;
+var db;
 
 module.exports = {
     connect: function() {

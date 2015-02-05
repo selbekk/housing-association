@@ -1,7 +1,7 @@
 var fs = require('fs');
 var morgan = require('morgan');
 
-var settings = require('./config/settings');
+var settings = require('./../config/settings');
 
 module.exports = {
     setup: function(app) {
