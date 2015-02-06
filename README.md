@@ -37,7 +37,7 @@ tho bro, I got two words for you:
 Open a terminal window, and type in ``mongod``. You'll see some general startup
 yabba dabba, and then you'll be ready to...
 
-### Step 2: Run the app!
+### Step 3: Run the app!
 
 There isn't a frontend build quite yet, so let's just get everything up and
 running:
