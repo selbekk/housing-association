@@ -1,14 +1,20 @@
-module.exports = function(opts) {
-    this.id = opts.id;
-    this.name = opts.name;
-    this.city = opts.city;
-    this.country = opts.country;
+var validator = require('validator');
+var mongoose = require('mongoose');
 
-    this.isValid = function() {
-        return this.name && this.city && this.country;
-    }
+var organizationSchema = mongoose.Schema({
+    id: Number,
+    name: String,
+    city: String,
+    country: String
+});
 
-    this.getId = function() {
-        return parseInt(this.id);
-    }
-}
+organizationSchema.methods.isValid = function() {
+    return this.name
+        && this.name.length > 6
+        && this.city
+        && this.city.length
+        && this.country
+        && this.country.length > 1;
+};
+
+module.exports = mongoose.model('Organization', organizationSchema);

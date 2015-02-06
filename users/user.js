@@ -1,11 +1,20 @@
 var validator = require('validator');
+var mongoose = require('mongoose');
 
-module.exports = function(opts) {
-    this.username = opts.username;
-    this.email = opts.email;
-    this.phone = opts.phone;
+var db = mongoose.connection;
 
-    this.isValid = function() {
-        return this.username && validator.isEmail(this.email);
-    }
-}
+var userSchema = mongoose.Schema({
+    username: String,
+    email: String,
+    phone: String
+});
+
+userSchema.methods.isValid = function() {
+    return validator.isEmail(this.email)
+        && !!this.username
+        && this.username.length > 3
+        && !!this.phone
+        && this.phone.length > 7;
+};
+
+module.exports = mongoose.model('User', userSchema);
