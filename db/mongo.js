@@ -8,8 +8,7 @@ module.exports = {
     connect: function() {
         db = mongoose.connect(config.getDbConnectionString(), function(err) {
             if(err) {
-                console.log('could not connect to database with connection string '
-                + config.getDbConnectionString() + '. Have you started mongod? ', err);
+                console.log('could not connect to database. Have you started mongod? ', err);
             }
             else {
                 console.log('connected to mongo db at port ' + config.dbPort + '!');

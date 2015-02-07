@@ -7,29 +7,31 @@ var router = express.Router();
 
 router.route('/')
     .get(function(req, res) {
-        return res.json(service.getAll());
+        res.json(service.getAll(function(users) {
+            return users;
+        }));
     })
     .post(function(req, res) {
         var user = new User(req.body);
 
-        var id = service.create(user);
+        service.create(user, function(id) {
+            if(!id) {
+                return res.sendStatus(400);
+            }
 
-        if(!id) {
-            return res.sendStatus(400);
-        }
-
-        return  res.json(id);
+            return  res.json(id);
+        });
     });
 
 router.route('/:username')
     .get(function(req, res) {
-        var user = service.get(req.params.username);
+        var user = service.get(req.params.username, function(user) {
+            if (!user) {
+                return res.sendStatus(404);
+            }
 
-        if (!user) {
-            return res.sendStatus(404);
-        }
-
-        return res.json(user);
+            return res.json(user);
+        });
     })
     .put(function(req, res) {
         var user = new User(req.body);
@@ -37,13 +39,17 @@ router.route('/:username')
             user.username = req.params.username;
         }
 
-        if (service.update(user)) {
-            return res.sendStatus(200);
-        }
-        return res.sendStatus(400); // TODO: Improve response
+        service.update(user, function(isSuccess) {
+            if (result) {
+                return res.sendStatus(200);
+            }
+            return res.sendStatus(400); // TODO: Improve response
+        });
     })
     .delete(function(req, res) {
-        var deleted = service.delete(req.params.username);
+        var deleted = service.delete(req.params.username, function(deleted) {
+            
+        });
 
         if(deleted) {
             return res.json(deleted);
