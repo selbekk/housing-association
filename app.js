@@ -19,8 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 logger.setup(app);
 
 // Register routes
-app.use('/organizations', organizationsRouter);
-app.use('/users', userRouter);
+app.use('/api/organizations', organizationsRouter);
+app.use('/api/users', userRouter);
 
 // Handle errors
 app.use(errorHandler.handleValidation);
