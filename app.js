@@ -22,6 +22,7 @@ app.set('views', __dirname + '/views');
 
 // Register decorating middleware
 app.use(express.static('public'));
+app.use('/bower_components',  express.static(__dirname + '/js/external'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Add some logging to the mix

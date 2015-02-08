@@ -1,24 +1,31 @@
 (function() {
     var $form;
 
-    function logIn(e) {
+    function login(e) {
         e.preventDefault();
+
+        // TODO: Add spinner
 
         $.when( $.post('/login', $form.serialize()) )
             .then(loginSuccess, loginError);
     }
 
     function loginSuccess(data) {
-
+        // TODO: Remove spinner
+        // TODO: Redirect user
+        console.log('login successful!', data);
     }
 
     function loginError(data, textStatus, jqXHR) {
-        console.log('error!');
+        // TODO: Remove spinner
+        // TODO: Show error
+        console.log('error!', jqXHR);
     }
 
     function init() {
         $form = $('.login-form');
-        $form.on('submit', logIn);
+        $form.on('submit', login);
+        $form.find('#login-button').on('click', login);
     }
     init();
 })();

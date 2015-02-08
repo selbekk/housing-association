@@ -18,12 +18,16 @@ Just for the sake of being hipster, we'll use **io.js** today.
 
 Missing iojs (or node) - but got [homebrew](http://brew.sh/) installed?
 
-    brew install iojs node
+    brew install iojs
 
 Missing [MongoDB](http://www.mongodb.org)? Install both the server daemon and
 the client here with homebrew as well:
 
     brew install mongodb
+
+Lastly, you need [bower]() to install frontend dependencies. Install it by
+
+    brew install bower -g
 
 ### Step 1: Install dependencies
 
