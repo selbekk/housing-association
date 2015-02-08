@@ -11,8 +11,8 @@ module.exports = {
     create: function(organization, callback) {
         organization.save(callback);
     },
-    update: function(id, organization, callback) {
-        Organization.findByIdAndUpdate(id, organization, callback);
+    update: function(id, change, callback) {
+        Organization.findByIdAndUpdate(id, change, callback);
     },
     delete: function(id, callback) {
         Organization.findByIdAndRemove(id, callback);

@@ -24,7 +24,8 @@ app.use('/users', userRouter);
 
 // Handle errors
 app.use(errorHandler.handleValidation);
-app.use(errorHandler.handleRemaining);
+app.use(errorHandler.handleNotFound);
+app.use(errorHandler.handleHttpStatusOverride);
 
 // Start server
 app.listen(3000, function() {
