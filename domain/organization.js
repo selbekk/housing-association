@@ -1,4 +1,3 @@
-var validator = require('validator');
 var mongoose = require('mongoose');
 
 var organizationSchema = mongoose.Schema({

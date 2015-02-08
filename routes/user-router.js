@@ -1,7 +1,7 @@
 var express = require('express');
 
-var User = require('./user');
-var service = require('./user-service');
+var User = require('../domain/user');
+var service = require('../service/user-service');
 
 var router = express.Router();
 

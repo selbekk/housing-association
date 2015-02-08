@@ -1,6 +1,6 @@
 var express = require('express');
-var service = require('./organization-service');
-var Organization = require('./organization');
+var service = require('../service/organization-service');
+var Organization = require('../domain/organization');
 
 var router = express.Router();
 

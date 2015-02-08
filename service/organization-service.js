@@ -1,5 +1,5 @@
 var _ = require('lodash');
-var Organization = require('./organization');
+var Organization = require('../domain/organization');
 
 module.exports = {
     getAll: function(callback) {

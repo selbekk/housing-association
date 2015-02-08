@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var db = require('mongoose').connection;
 
-var User = require('./user');
+var User = require('../domain/user');
 
 
 module.exports = {
