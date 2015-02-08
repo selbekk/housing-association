@@ -2,20 +2,20 @@ var _ = require('lodash');
 var Organization = require('./organization');
 
 module.exports = {
-    get: function(id, callback) {
-        // TODO: implement
-    },
     getAll: function(callback) {
-        // TODO: implement
+        Organization.find(callback);
+    },
+    get: function(id, callback) {
+        Organization.find({id: id}, callback);
     },
     create: function(organization, callback) {
-        // TODO: implement
+        organization.save(callback);
     },
     update: function(organization, callback) {
-        // TODO: implement
+        Organization.findByIdAndUpdate(organization.get('_id'), organization, callback);
     },
     delete: function(id, callback) {
-        // TODO: implement
+        Organization.findByIdAndRemove(id, callback);
     }
 
 }

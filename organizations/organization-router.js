@@ -6,26 +6,33 @@ var router = express.Router();
 
 router.route('/')
     .get(function(req, res) {
-        var organizations = service.getAll();
-        return res.json(organizations);
+        service.getAll(function(err, organizations) {
+            if(err) {
+                console.error(err);
+                res.status(500).send(err);
+            }
+            return res.json(organizations);
+        });
     })
     .post(function(req, res) {
         var organization = new Organization(req.body);
 
-        service.create(organization, function(err, id) {
-            if(!id) {
-                return res.status(400).json('The organization is missing required fields');
+        service.create(organization, function(err, newOrg) {
+            if(err) {
+                console.error(err);
+                return res.status(500).send(err);
             }
 
-            return res.status(201).json(id);
+            return res.status(201).json(newOrg);
         });
     });
 
 router.route('/:id')
     .get(function(req, res) {
         service.get(req.params.id, function(err, organization) {
-            if (!organization) {
-                return res.sendStatus(404);
+            if (err) {
+                console.error(err);
+                return res.status(500).send(err);
             }
 
             return res.json(organization);
@@ -33,23 +40,22 @@ router.route('/:id')
     })
     .put(function(req, res) {
         var organization = new Organization(req.body);
-        if(!organization || !organization.getId() !== undefined) {
-            organization.id = req.params.id;
-        }
 
-        service.update(organization, function(err, result) {
-            if(organization) {
-                return res.sendStatus(200);
+        service.update(organization, function(err, updated) {
+            if(err) {
+                console.error(err);
+                return res.status(500).send(err);
             }
-            return res.sendStatus(400); // TODO: Improve response
+            return res.json(updated);
         });
     })
     .delete(function(req, res) {
         service.delete(req.params.id, function(err, deleted) {
-            if(deleted) {
-                return res.json(deleted);
+            if(err) {
+                console.error(err);
+                return res.status(500).send(err);
             }
-            return res.sendStatus(404); // TODO: Improve response
+            return res.json(deleted);
         });
     });
 
