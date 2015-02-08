@@ -39,9 +39,7 @@ router.route('/:id')
         });
     })
     .put(function(req, res) {
-        var organization = new Organization(req.body);
-
-        service.update(organization, function(err, updated) {
+        service.update(req.params.id, req.body, function(err, updated) {
             if(err) {
                 console.error(err);
                 return res.status(500).send(err);

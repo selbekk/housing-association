@@ -6,13 +6,13 @@ module.exports = {
         Organization.find(callback);
     },
     get: function(id, callback) {
-        Organization.find({_id: id}, callback);
+        Organization.findById(id, callback);
     },
     create: function(organization, callback) {
         organization.save(callback);
     },
-    update: function(organization, callback) {
-        Organization.findByIdAndUpdate(organization.get('_id'), organization, callback);
+    update: function(id, organization, callback) {
+        Organization.findByIdAndUpdate(id, organization, callback);
     },
     delete: function(id, callback) {
         Organization.findByIdAndRemove(id, callback);
