@@ -7,14 +7,14 @@ var router = express.Router();
 
 router.route('/')
     .get(function(req, res) {
-        res.json(service.getAll(function(users) {
+        res.json(service.getAll(function(err, users) {
             return users;
         }));
     })
     .post(function(req, res) {
         var user = new User(req.body);
 
-        service.create(user, function(id) {
+        service.create(user, function(err, id) {
             if(!id) {
                 return res.sendStatus(400);
             }
@@ -25,7 +25,7 @@ router.route('/')
 
 router.route('/:username')
     .get(function(req, res) {
-        var user = service.get(req.params.username, function(user) {
+        var user = service.get(req.params.username, function(err, user) {
             if (!user) {
                 return res.sendStatus(404);
             }
@@ -39,7 +39,7 @@ router.route('/:username')
             user.username = req.params.username;
         }
 
-        service.update(user, function(isSuccess) {
+        service.update(user, function(err, isSuccess) {
             if (result) {
                 return res.sendStatus(200);
             }
@@ -47,8 +47,8 @@ router.route('/:username')
         });
     })
     .delete(function(req, res) {
-        var deleted = service.delete(req.params.username, function(deleted) {
-            
+        var deleted = service.delete(req.params.username, function(err, deleted) {
+
         });
 
         if(deleted) {

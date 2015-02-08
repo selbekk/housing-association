@@ -1,11 +1,12 @@
 var _ = require('lodash');
+var db = require('mongoose').connection;
 
 var User = require('./user');
 
 
 module.exports = {
     getAll: function(callback) {
-        // TODO: implement
+        
     },
     get: function(username, callback) {
         // TODO: implement

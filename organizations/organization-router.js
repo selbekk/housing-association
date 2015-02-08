@@ -12,7 +12,7 @@ router.route('/')
     .post(function(req, res) {
         var organization = new Organization(req.body);
 
-        service.create(organization, function(id) {
+        service.create(organization, function(err, id) {
             if(!id) {
                 return res.status(400).json('The organization is missing required fields');
             }
@@ -23,7 +23,7 @@ router.route('/')
 
 router.route('/:id')
     .get(function(req, res) {
-        service.get(req.params.id, function(organization) {
+        service.get(req.params.id, function(err, organization) {
             if (!organization) {
                 return res.sendStatus(404);
             }
@@ -37,7 +37,7 @@ router.route('/:id')
             organization.id = req.params.id;
         }
 
-        service.update(organization, function(result) {
+        service.update(organization, function(err, result) {
             if(organization) {
                 return res.sendStatus(200);
             }
@@ -45,7 +45,7 @@ router.route('/:id')
         });
     })
     .delete(function(req, res) {
-        service.delete(req.params.id, function(deleted) {
+        service.delete(req.params.id, function(err, deleted) {
             if(deleted) {
                 return res.json(deleted);
             }
