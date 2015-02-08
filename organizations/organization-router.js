@@ -5,53 +5,46 @@ var Organization = require('./organization');
 var router = express.Router();
 
 router.route('/')
-    .get(function(req, res) {
+    .get(function(req, res, next) {
         service.getAll(function(err, organizations) {
             if(err) {
-                console.error(err);
-                res.status(500).send(err);
+                return next(err);
             }
             return res.json(organizations);
         });
     })
-    .post(function(req, res) {
+    .post(function(req, res, next) {
         var organization = new Organization(req.body);
 
         service.create(organization, function(err, newOrg) {
             if(err) {
-                console.error(err);
-                return res.status(500).send(err);
+                return next(err);
             }
-
             return res.status(201).json(newOrg);
         });
     });
 
 router.route('/:id')
-    .get(function(req, res) {
+    .get(function(req, res, next) {
         service.get(req.params.id, function(err, organization) {
             if (err) {
-                console.error(err);
-                return res.status(500).send(err);
+                return next(err);
             }
-
             return res.json(organization);
         });
     })
-    .put(function(req, res) {
+    .put(function(req, res, next) {
         service.update(req.params.id, req.body, function(err, updated) {
             if(err) {
-                console.error(err);
-                return res.status(500).send(err);
+                return next(err);
             }
             return res.json(updated);
         });
     })
-    .delete(function(req, res) {
+    .delete(function(req, res, next) {
         service.delete(req.params.id, function(err, deleted) {
             if(err) {
-                console.error(err);
-                return res.status(500).send(err);
+                return next(err);
             }
             return res.json(deleted);
         });
