@@ -6,7 +6,7 @@ module.exports = {
         Organization.find(callback);
     },
     get: function(id, callback) {
-        Organization.find({id: id}, callback);
+        Organization.find({_id: id}, callback);
     },
     create: function(organization, callback) {
         organization.save(callback);
