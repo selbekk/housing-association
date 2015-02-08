@@ -1,3 +1,9 @@
+# Ignore dependencies - those can be downloaded
 node_modules/
+bower_components/
+
+# Logs aren't made for git
 *.log
+
+# OS specific stuff
 .DS_Store
