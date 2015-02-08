@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 
 var db = require('./db/mongo');
 var logger = require('./util/logger')
+var errorHandler = require('./util/error-handler');
 var organizationsRouter = require('./organizations/organization-router');
 var userRouter = require('./users/user-router');
 
@@ -10,26 +11,20 @@ db.connect();
 
 var app = express();
 
+// Register decorating middleware
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// Add some logging to the mix
 logger.setup(app);
 
+// Register routes
 app.use('/organizations', organizationsRouter);
 app.use('/users', userRouter);
 
-app.use(function(err, req, res, next) {
-    if(err.name === 'ValidationError') {
-        return res.status(400).json(err);
-    }
-    next();
-});
-
-app.use(function(err, req, res, next) {
-    if(err) {
-        return res.status(500).json();
-    }
-    next();
-});
+// Handle errors
+app.use(errorHandler.handleValidation);
+app.use(errorHandler.handleRemaining);
 
 // Start server
 app.listen(3000, function() {
