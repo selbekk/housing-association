@@ -25,7 +25,7 @@ the client here with homebrew as well:
 
     brew install mongodb
 
-Lastly, you need [bower]() to install frontend dependencies. Install it by
+Lastly, you need [bower](http://bower.io/) to install frontend dependencies. Install it by
 
     brew install bower -g
 
@@ -35,6 +35,10 @@ This project depend on a few different npm packages to run successfully. Relax
 tho bro, I got two words for you:
 
     npm install
+
+Also, frontend dependencies - two more words.
+
+    bower install
 
 ### Step 2: Start the MongoDB daemon
 
@@ -46,6 +50,6 @@ yabba dabba, and then you'll be ready to...
 There isn't a frontend build quite yet, so let's just get everything up and
 running:
 
-    iojs app.js
+    npm start
 
 And that's it - you should be up and running!
