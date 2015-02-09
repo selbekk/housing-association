@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var mustacheExpress = require('mustache-express');
+var handlebars = require('express-handlebars');
 
 var db = require('./db/mongo');
 var logger = require('./util/logger')
@@ -15,14 +15,12 @@ db.connect();
 var app = express();
 
 // Register view engine
-app.engine('mustache', mustacheExpress());
-
-app.set('view engine', 'mustache');
-app.set('views', __dirname + '/views');
+app.engine('.hbs', handlebars({defaultLayout: 'default', extname: '.hbs'}));
+app.set('view engine', '.hbs');
 
 // Register decorating middleware
 app.use(express.static('public'));
-app.use('/bower_components',  express.static(__dirname + '/js/external'));
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Add some logging to the mix

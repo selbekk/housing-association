@@ -1,0 +1,179 @@
+/*  In yo face styles
+
+    For those big n bold styles you love to hate
+ */
+
+.in-yo-face {
+    font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+    color: #303031;
+}
+
+.in-yo-face h1,
+.in-yo-face h2,
+.in-yo-face h3,
+.in-yo-face h4 {
+    color: #4a4a4a;
+    font-weight: bold;
+}
+
+/* the sections */
+
+.in-yo-face .row {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    transition: padding 500ms ease-in-out;
+}
+
+.in-yo-face .row-splash {
+    padding: 200px 0 20px;
+    transition: padding 1s ease-in-out;
+}
+
+.in-yo-face #top-header {
+    background-image: url(../img/content/backyard.jpg);
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+.in-yo-face .row-splash h1 {
+    font-size: 40px;
+    font-weight: 200;
+    text-transform: uppercase;
+    color: #fafafa;
+    margin: 0;
+}
+
+.in-yo-face .row-splash h2 {
+    color: #eaeaea;
+    font-weight: 200;
+    margin: 0;
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 1);
+}
+
+.in-yo-face .row-lead {
+    font-weight: lighter;
+    font-size: 200%;
+}
+
+.in-yo-face .row-lead strong {
+    font-weight: 200;
+    color: #FFA500;
+}
+
+/* info rows */
+.in-yo-face .row-info img {
+    width: 100%;
+}
+
+.in-yo-face .row-info h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-family: tahoma, serif;
+}
+
+.in-yo-face .row-info p {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.6em;
+}
+
+/* signup cta */
+.in-yo-face .row-cta {
+    background-color: orange;
+}
+
+.in-yo-face .row-cta h2 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.in-yo-face .row-cta p {
+    font-weight: 300;
+    font-size: 150%;
+    text-align: center;
+}
+
+.in-yo-face .row-mail form {
+    margin: 20px 0;
+}
+
+.in-yo-face .row-mail input {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+    margin: 0 auto;
+    padding: 5px;
+    font-size: 120%;
+    text-align: center;
+}
+
+.in-yo-face .row-mail .disclaimer {
+    color: #101010;
+    font-size: 100%;
+}
+
+/* buttons */
+
+.in-yo-face .btn.btn-cta {
+    border: 3px solid #FFA500;
+    border-radius: 0;
+    color: #393939;
+    font-size: 60%;
+    font-weight: bold;
+    padding: 5px 30px;
+
+    transition: all 100ms ease-in-out;
+}
+
+.in-yo-face .btn.btn-cta:hover,
+.in-yo-face .btn.btn-cta:focus {
+    background-color: #FFA500;
+}
+
+.in-yo-face .btn.btn-cta:active {
+    border-color: #ffe700;
+    background-color: #ffe700;
+    box-shadow: none;
+}
+
+/* footer */
+#main-footer {
+    margin-top: 20px;
+    background-color: #2a2a2a;
+    color: #afafaf;
+    line-height: 1.6em;
+}
+
+#main-footer h2 {
+    color: #fafafa;
+}
+
+
+
+/* small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .in-yo-face .row-lead .wrap {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .in-yo-face .row-splash {
+        padding-top: 300px;
+    }
+
+    .in-yo-face .row-splash h1 {
+        font-size: 80px;
+    }
+}
+
+/* medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+}
+
+/* large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
