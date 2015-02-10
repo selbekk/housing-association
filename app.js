@@ -35,6 +35,7 @@ app.use(openRouter);
 app.use(errorHandler.handleValidation);
 app.use(errorHandler.handleNotFound);
 app.use(errorHandler.handleHttpStatusOverride);
+app.use(errorHandler.logErrors);
 
 // Start server
 app.listen(3000, function() {

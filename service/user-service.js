@@ -1,5 +1,4 @@
 var _ = require('lodash');
-var db = require('mongoose').connection;
 
 var User = require('../domain/user');
 
