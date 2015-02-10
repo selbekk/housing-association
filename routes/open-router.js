@@ -28,7 +28,9 @@ router.route('/newsletter')
             if(err) {
                 return next(err);
             }
-
+            if(!deleted) {
+                return res.sendStatus(404);
+            }
             console.log(deleted.email + ' just withdrew from the newsletter.');
             return res.json({email: deleted});
         });
