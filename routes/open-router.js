@@ -3,7 +3,7 @@ var newsletterService = require('../service/newsletter-service');
 
 var router = express.Router();
 
-router.get(function(req, res, next) {
+router.get('/', function(req, res, next) {
     res.render('index', { title: 'super title!'} );
 });
 
