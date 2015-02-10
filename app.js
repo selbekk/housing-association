@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var handlebars = require('express-handlebars');
 
 var db = require('./db/mongo');
-var logger = require('./util/logger')
+var logger = require('./util/logger');
 var errorHandler = require('./util/error-handler');
 
 var organizationsRouter = require('./routes/organization-router');

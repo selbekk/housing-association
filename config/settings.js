@@ -15,6 +15,6 @@ delete settings['$0'];
 
 settings.getDbConnectionString = function() {
     return 'mongodb://' + settings.dbHost + ':' + settings.dbPort + '/' + settings.dbDatabase;
-}
+};
 
 module.exports = settings;
